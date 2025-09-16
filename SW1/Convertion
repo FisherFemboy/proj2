@@ -1,0 +1,13 @@
+peso_rate = 57.17
+yen_rate = 146.67
+
+
+print("Currency Converter (Dollar to Peso and Yen)")
+
+dollars = float(input("Enter currency in $: "))
+
+pesos = dollars * peso_rate
+yen = dollars * yen_rate
+
+print("\nDollar($)\tPhil Peso(P)\tJpn Yen(¥)")
+print(f"{dollars}\t\t{pesos:.2f}\t\t{yen:.2f}")
