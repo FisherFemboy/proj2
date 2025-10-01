@@ -1,0 +1,27 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+def char_frequency(text):
+    freq = {}
+    for char in text:
+        if char.isalpha():
+            freq[char] = freq.get(char, 0) + 1
+    return freq
+
+@app.route('/output')
+def greetings():
+    return f"I love Flask web development using Python! -<Ryan Rovic Retuya>"
+
+@app.route('/charfreq')
+def charfreq():
+    user_input = request.args.get('text', '')
+    parts = [part.strip() for part in user_input.split(",")]
+    results = []
+    for part in parts:
+        result = char_frequency(part)
+        results.append(result)
+    return jsonify(results)
+
+if __name__ == '__main__':
+    app.run(debug=True)
